@@ -7,7 +7,7 @@ export class BackendDB implements IPluggableDB {
     private db: sqlite3.Database
 
     constructor() {
-        this.db = sqlite3.default("gateway.db")
+        this.db = sqlite3.default("backend.db")
         this.db.prepare("CREATE TABLE IF NOT EXISTS auth (id INTEGER UNIQUE, token_b TEXT, token_c TEXT)").run()
         this.db.prepare("CREATE TABLE IF NOT EXISTS endpoints (identifier TEXT, url TEXT)").run()
 

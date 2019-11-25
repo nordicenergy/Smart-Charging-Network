@@ -6,7 +6,7 @@ export class OcnDB implements IPluggableDB {
     private db: sqlite3.Database
 
     constructor() {
-        this.db = sqlite3.default("gateway.db")
+        this.db = sqlite3.default("ocn.db")
         this.db.prepare("CREATE TABLE IF NOT EXISTS auth (id INTEGER UNIQUE, token_b TEXT, token_c TEXT)").run()
         this.db.prepare("CREATE TABLE IF NOT EXISTS endpoints (identifier TEXT, role TEXT, url TEXT)").run()
         this.db.prepare("CREATE TABLE IF NOT EXISTS sessions (uid TEXT, evse_uid TEXT, location TEXT)").run()
