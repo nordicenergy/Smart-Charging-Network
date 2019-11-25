@@ -20,7 +20,10 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/emobilify/ocpi-2.1.1-bridge#readme",
   "dependencies": {
+    "@types/express": "^4.17.2",
     "@types/node": "^12.12.12",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
     "ocn-bridge": "git+ssh://git@bitbucket.org/shareandcharge/ocn-bridge.git",
     "ts-node": "^8.5.2",
     "typescript": "^3.7.2"
@@ -28,8 +31,10 @@
   "devDependencies": {
     "@types/chai": "^4.2.5",
     "@types/mocha": "^5.2.7",
+    "@types/supertest": "^2.0.8",
     "chai": "^4.2.0",
     "mocha": "^6.2.2",
+    "supertest": "^4.0.2",
     "tslint": "^5.20.1"
   }
 }
