@@ -10,10 +10,10 @@ export const ocnBridgeConfig: IBridgeConfigurationOptions = {
     roles: [
         {
             country_code: "NL",
-            party_id: "NKL",
+            party_id: "ELD",
             role: "CPO",
             business_details: {
-                name: "NKL (DRIIVZ)"
+                name: "Elaad (DRIIVZ backend)"
             }
         }
     ],

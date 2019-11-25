@@ -1,15 +1,30 @@
 image: node:10.15.3
 
 pipelines:
+  branches:
+    master:
+      - step:
+          caches:
+            - node
+          script:
+            - npm config set unsafe-perm true
+            - npm install
+            - ls node_modules/ocn-bridge
+            - cp src/config/ocn.example.ts src/config/ocn.ts
+            - cp src/config/backend.example.ts src/config/backend.ts
+            - npm run build
+            - npm test
+            - ssh $HOST 'bash -s' < ./setup.sh
   default:
     - step:
-        caches:
-          - node
-        script: # Modify the commands below to build your repository.
-          - npm config set unsafe-perm true
-          - npm install
-          - ls node_modules/ocn-bridge
-          - cp src/config/ocn.example.ts src/config/ocn.ts
-          - cp src/config/backend.example.ts src/config/backend.ts
-          - npm run build
-          - npm test
+          caches:
+            - node
+          script:
+            - npm config set unsafe-perm true
+            - npm install
+            - ls node_modules/ocn-bridge
+            - cp src/config/ocn.example.ts src/config/ocn.ts
+            - cp src/config/backend.example.ts src/config/backend.ts
+            - npm run build
+            - npm test    
+          

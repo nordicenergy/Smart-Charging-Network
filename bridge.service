@@ -1,0 +1,13 @@
+[Unit]
+Description=OCPI 2.1.1 bridge
+After=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/ocpi-2.1.1-bridge
+ExecStart=/usr/bin/node dist/index.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

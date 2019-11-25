@@ -3,14 +3,14 @@ import { BackendDB } from "../models/database/backend-db";
 
 export const backendConfig: IOcpiBackendConfig = {
     registration: {
-        versionsURL: "https://qa.backoffice.net/ocpi/versions",
-        tokenA: "1234567890"
+        versionsURL: "https://smartchain.driivz.com/externalIncoming/ocpi/cpo/versions",
+        tokenA: "jgkhfa4-skjdhfwjk5-fswjkdfhskj-pwrhas583"
     },
     publicURL: "http://localhost:3001",
-    party_id: "NL",
-    country_code: "NKL",
+    party_id: "DE",
+    country_code: "EMY",
     business_details: {
-        name: "NKL (DRIIVZ)"
+        name: "eMobilify GmbH OCN Bridge"
     },
     pluggableDB: new BackendDB()
 }
