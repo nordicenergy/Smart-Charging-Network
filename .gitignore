@@ -1,5 +1,5 @@
 /node_modules/
 /dist/
-src/config/bridge.ts
-src/config/ocpi.ts
+src/config/backend.ts
+src/config/ocn.ts
 *.db
