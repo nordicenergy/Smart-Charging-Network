@@ -3,14 +3,14 @@ import { assert } from "chai"
 import request from "supertest"
 import { Server } from "http"
 import { startOcpiApi, stopOcpiApi } from "../../../../src/api/ocpi/ocpi"
-import { ocpiTestConfig } from "../../../config/ocpi"
+import { backendTestConfig } from "../../../config/backend"
 
 describe("OCPI 2.1.1 versions controller", () => {
 
     let server: Server
 
     beforeEach(async () => {
-        server = await startOcpiApi(ocpiTestConfig)
+        server = await startOcpiApi(backendTestConfig)
     })
 
     afterEach(async () => {

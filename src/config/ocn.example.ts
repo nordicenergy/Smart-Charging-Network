@@ -1,7 +1,7 @@
 import { IBridgeConfigurationOptions, DefaultRegistry } from "ocn-bridge"
 import { ModuleImplementation } from "ocn-bridge/dist/models/bridgeConfigurationOptions"
 import { OcpiBridge } from "../ocpi-bridge"
-import { BridgeDB } from "../models/database/bridge-db"
+import { OcnDB } from "../models/database/ocn-db"
 
 export const ocnBridgeConfig: IBridgeConfigurationOptions = {
     publicBridgeURL: "http://localhost:3000",
@@ -22,6 +22,6 @@ export const ocnBridgeConfig: IBridgeConfigurationOptions = {
         receiver: []
     },
     pluggableAPI: new OcpiBridge(),
-    pluggableDB: new BridgeDB(),
+    pluggableDB: new OcnDB(),
     pluggableRegistry: new DefaultRegistry("http://localhost:8544", "0x345ca3e014aaf5dca488057592ee47305d9b3e10")
 }

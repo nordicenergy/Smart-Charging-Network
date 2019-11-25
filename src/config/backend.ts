@@ -1,5 +1,5 @@
 import { IOcpiBackendConfig } from "../models/ocpi";
-import { OcpiDB } from "../models/database/ocpi-db";
+import { BackendDB } from "../models/database/backend-db";
 
 export const backendConfig: IOcpiBackendConfig = {
     registration: {
@@ -12,5 +12,5 @@ export const backendConfig: IOcpiBackendConfig = {
     business_details: {
         name: "NKL (DRIIVZ)"
     },
-    pluggableDB: new OcpiDB()
+    pluggableDB: new BackendDB()
 }

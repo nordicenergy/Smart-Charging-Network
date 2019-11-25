@@ -1,6 +1,6 @@
 import { IPluggableDB } from "ocn-bridge";
 
-export class OcpiTestDB implements IPluggableDB {
+export class BackendTestDB implements IPluggableDB {
     public async getTokenB(): Promise<string> {
         return "token-b"
     }

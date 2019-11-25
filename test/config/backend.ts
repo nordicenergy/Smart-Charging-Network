@@ -1,7 +1,7 @@
 import { IOcpiBackendConfig } from "../../src/models/ocpi";
-import { OcpiTestDB } from "./ocpi-db";
+import { BackendTestDB } from "./backend-db";
 
-export const ocpiTestConfig: IOcpiBackendConfig = {
+export const backendTestConfig: IOcpiBackendConfig = {
     registration: {
         versionsURL: "https://qa.backoffice.net/ocpi/versions",
         tokenA: "1234567890"
@@ -12,5 +12,5 @@ export const ocpiTestConfig: IOcpiBackendConfig = {
     business_details: {
         name: "NKL (DRIIVZ)"
     },
-    pluggableDB: new OcpiTestDB()
+    pluggableDB: new BackendTestDB()
 }
