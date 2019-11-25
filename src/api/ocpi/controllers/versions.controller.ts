@@ -11,7 +11,7 @@ export class VersionsController {
             res.send(OcpiResponse.withData([
                 {
                     "version": "2.1.1",
-                    "url": `${config.publicURL}/ocpi/versions/2.1.1`
+                    "url": `${config.publicURL}/backend/ocpi/versions/2.1.1`
                 }
             ]))
         })
@@ -22,7 +22,7 @@ export class VersionsController {
                 endpoints: [
                     {
                         identifier: "credentials",
-                        url: `${config.publicURL}/ocpi/2.1.1/credentials`
+                        url: `${config.publicURL}/backend/ocpi/2.1.1/credentials`
                     }
                 ]
             }))

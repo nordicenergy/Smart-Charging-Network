@@ -19,7 +19,7 @@ describe("OCPI 2.1.1 versions controller", () => {
 
     it("get versions", (done) => {
         request(server)
-            .get("/ocpi/versions")
+            .get("/backend/ocpi/versions")
             .set("Authorization", "Token token-b")
             .expect(200, (err, res) => {
                 if (err) {
@@ -27,14 +27,14 @@ describe("OCPI 2.1.1 versions controller", () => {
                 }
                 assert.equal(res.body.status_code, 1000)
                 assert.equal(res.body.data[0].version, "2.1.1")
-                assert.equal(res.body.data[0].url, "http://localhost:3001/ocpi/versions/2.1.1")
+                assert.equal(res.body.data[0].url, "http://localhost:3001/backend/ocpi/versions/2.1.1")
                 done()
             })
     })
 
     it("get 2.1.1", (done) => {
         request(server)
-            .get("/ocpi/versions/2.1.1")
+            .get("/backend/ocpi/versions/2.1.1")
             .set("Authorization", "Token token-b")
             .expect(200, (err, res) => {
                 if (err) {
@@ -45,7 +45,7 @@ describe("OCPI 2.1.1 versions controller", () => {
                 assert.deepEqual(res.body.data.endpoints, [
                     {
                         identifier: "credentials",
-                        url: "http://localhost:3001/ocpi/2.1.1/credentials"
+                        url: "http://localhost:3001/backend/ocpi/2.1.1/credentials"
                     }
                 ])
                 done()
