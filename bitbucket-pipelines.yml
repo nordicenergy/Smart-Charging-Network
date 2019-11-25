@@ -7,6 +7,8 @@ pipelines:
         #   - node
         script: # Modify the commands below to build your repository.
           - npm install
+          - git+ssh://git@bitbucket.org/shareandcharge/ocn-bridge.git
+          - ls ./node_modules/ocn-bridge
           - cp src/config/config.example.ts src/config/config.ts
           - npm run build
           - npm test
