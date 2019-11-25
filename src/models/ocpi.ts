@@ -1,5 +1,8 @@
+import { IPluggableDB } from "ocn-bridge"
+
 export interface IOcpiConfig {
     publicURL: string
+    pluggableDB: IPluggableDB
 }
 
 export interface IResponse<T> {

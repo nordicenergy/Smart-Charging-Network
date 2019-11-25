@@ -1,7 +1,7 @@
 import { IBridgeConfigurationOptions, DefaultRegistry } from "ocn-bridge"
 import { ModuleImplementation } from "ocn-bridge/dist/models/bridgeConfigurationOptions"
 import { OcpiBridge } from "../ocpi-bridge"
-import { BridgeDB } from "../bridge-db"
+import { BridgeDB } from "../models/database/bridge-db"
 
 export const config: IBridgeConfigurationOptions = {
 

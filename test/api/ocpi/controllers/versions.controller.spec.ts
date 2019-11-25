@@ -3,13 +3,14 @@ import { assert } from "chai"
 import request from "supertest"
 import { Server } from "http"
 import { startOcpiApi, stopOcpiApi } from "../../../../src/api/ocpi/ocpi"
+import { ocpiTestConfig } from "../../../config/ocpi"
 
 describe("OCPI 2.1.1 versions controller", () => {
 
     let server: Server
 
     beforeEach(async () => {
-        server = await startOcpiApi()
+        server = await startOcpiApi(ocpiTestConfig)
     })
 
     afterEach(async () => {
@@ -19,6 +20,7 @@ describe("OCPI 2.1.1 versions controller", () => {
     it("get versions", (done) => {
         request(server)
             .get("/ocpi/versions")
+            .set("Authorization", "Token token-b")
             .expect(200, (err, res) => {
                 if (err) {
                     done(err)
@@ -33,6 +35,7 @@ describe("OCPI 2.1.1 versions controller", () => {
     it("get 2.1.1", (done) => {
         request(server)
             .get("/ocpi/versions/2.1.1")
+            .set("Authorization", "Token token-b")
             .expect(200, (err, res) => {
                 if (err) {
                     done(err)

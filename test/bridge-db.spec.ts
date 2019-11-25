@@ -1,6 +1,6 @@
 import "mocha"
 import { assert } from "chai"
-import { BridgeDB } from "../src/bridge-db"
+import { BridgeDB } from "../src/models/database/bridge-db"
 
 describe("Bridge Database", () => {
 
