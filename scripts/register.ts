@@ -17,7 +17,7 @@ const register = async () => {
 
     // use matched version (2.1.1) url to find endpoints
     const versionDetail = await sendGetRequest(foundVersion.url)
-    const credentialsEndpoint = versionDetail.enpdoints.find((endpoint: { identifier: string, url: string }) => endpoint.identifier === "credentials")
+    const credentialsEndpoint = versionDetail.endpoints.find((endpoint: { identifier: string, url: string }) => endpoint.identifier === "credentials")
     if (!credentialsEndpoint) {
         throw Error("No credentials endpoint found")
     }
