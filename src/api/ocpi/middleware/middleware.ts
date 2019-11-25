@@ -6,7 +6,7 @@ export const isAuthorized = (backendDB: IPluggableDB) => {
     return async (req: Request, res: Response, next: NextFunction) => {
         const storedToken = await backendDB.getTokenB()
         if (req.headers.authorization !== `Token ${storedToken}`) {
-            return res.status(401).send(OcpiResponse.withMessage(4001, "Unauthorized"))
+            return res.status(401).send(OcpiResponse.withMessage(2001, "Unauthorized"))
         }
         return next()
     }

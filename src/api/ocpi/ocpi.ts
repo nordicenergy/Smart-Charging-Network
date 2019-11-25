@@ -11,7 +11,11 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
 export const startOcpiApi = async (config: IOcpiBackendConfig): Promise<Server> => {
-    app.use(isAuthorized(config.pluggableDB), VersionsController.getRoutes(config))
+    app.use(
+        "/backend",
+        isAuthorized(config.pluggableDB),
+        VersionsController.getRoutes(config)
+    )
     return new Promise((resolve, _) => {
         const server = app.listen(3001, () => resolve(server))
     })
