@@ -7,8 +7,8 @@ export const backendConfig: IOcpiBackendConfig = {
         tokenA: "1234567890"
     },
     publicURL: "http://localhost:3001",
-    party_id: "DE",
-    country_code: "EMY",
+    party_id: "EMY",
+    country_code: "DE",
     business_details: {
         name: "eMobilify GmbH OCN Bridge"
     },
