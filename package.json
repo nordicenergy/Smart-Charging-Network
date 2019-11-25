@@ -1,0 +1,35 @@
+{
+  "name": "ocpi-2.1.1-bridge",
+  "version": "0.1.0",
+  "description": "Talk to the OCN with an OCPI 2.1.1 backend",
+  "main": "dist/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "npm run lint && tsc",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "start": "ts-node src",
+    "test": "mocha -r ts-node/register 'test/**/*.spec.ts'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/emobilify/ocpi-2.1.1-bridge.git"
+  },
+  "author": "eMobilify GmbH",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/emobilify/ocpi-2.1.1-bridge#readme",
+  "dependencies": {
+    "@types/node": "^12.12.12",
+    "ocn-bridge": "git+ssh://git@bitbucket.org/shareandcharge/ocn-bridge.git",
+    "ts-node": "^8.5.2",
+    "typescript": "^3.7.2"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.5",
+    "@types/mocha": "^5.2.7",
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2",
+    "tslint": "^5.20.1"
+  }
+}

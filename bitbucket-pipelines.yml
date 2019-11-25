@@ -1,0 +1,12 @@
+image: node:10.15.3
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - node
+        script: # Modify the commands below to build your repository.
+          - npm install
+          - cp src/config/config.example.ts src/config/config.ts
+          - npm run build
+          - npm test
