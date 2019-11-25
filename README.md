@@ -11,8 +11,8 @@ Talk to the OCN with an OCPI 2.1.1 backend
 
 Copy the example config files, editing necessary values:
 ```
-cp src/config/bridge.example.ts src/config/bridge.ts
-cp src/config/ocpi.example.ts src/config/ocpi.ts
+cp src/config/ocn.example.ts src/config/ocn.ts
+cp src/config/backend.example.ts src/config/backend.ts
 ```
 
 Bridge config is for `ocn-bridge`, ocpi config for the backoffice being used.
