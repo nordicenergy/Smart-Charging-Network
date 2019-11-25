@@ -21,7 +21,7 @@
   "homepage": "https://bitbucket.org/emobilify/ocpi-2.1.1-bridge#readme",
   "dependencies": {
     "@types/node": "^12.12.12",
-    "ocn-bridge": "git+https://bitbucket.org/shareandcharge/ocn-bridge.git",
+    "ocn-bridge": "git+ssh://git@bitbucket.org/shareandcharge/ocn-bridge.git",
     "ts-node": "^8.5.2",
     "typescript": "^3.7.2"
   },
