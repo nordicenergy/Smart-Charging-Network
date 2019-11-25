@@ -19,7 +19,8 @@ export const ocnBridgeConfig: IBridgeConfigurationOptions = {
     ],
     modules: {
         implementation: ModuleImplementation.CUSTOM,
-        receiver: []
+        receiver: [],
+        sender: []
     },
     pluggableAPI: new OcpiBridge(),
     pluggableDB: new OcnDB(),

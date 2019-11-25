@@ -54,7 +54,7 @@ const sendCredentialsRequest = async (url: string, tokenB: string): Promise<any>
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            url: `${config.publicURL}/ocpi/versions`,
+            url: `${config.publicURL}/backend/ocpi/versions`,
             token: tokenB,
             party_id: config.party_id,
             country_code: config.country_code,
