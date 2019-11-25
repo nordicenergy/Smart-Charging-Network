@@ -1,10 +1,10 @@
 import { Router } from "express";
 import { OcpiResponse } from "ocn-bridge/dist/models/ocpi/common";
-import { IOcpiConfig } from "../../../models/ocpi";
+import { IOcpiBackendConfig } from "../../../models/ocpi";
 
 export class VersionsController {
 
-    public static getRoutes(config: IOcpiConfig): Router {
+    public static getRoutes(config: IOcpiBackendConfig): Router {
         const router = Router()
 
         router.get("/ocpi/versions", async (_, res) => {

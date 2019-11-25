@@ -1,7 +1,15 @@
 import { IPluggableDB } from "ocn-bridge"
+import { IBusinessDetails } from "ocn-bridge/dist/models/ocpi/common"
 
-export interface IOcpiConfig {
+export interface IOcpiBackendConfig {
+    registration: {
+        versionsURL: string
+        tokenA: string
+    }
     publicURL: string
+    party_id: string
+    country_code: string
+    business_details: IBusinessDetails
     pluggableDB: IPluggableDB
 }
 

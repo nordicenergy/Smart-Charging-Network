@@ -3,8 +3,7 @@ import { ModuleImplementation } from "ocn-bridge/dist/models/bridgeConfiguration
 import { OcpiBridge } from "../ocpi-bridge"
 import { BridgeDB } from "../models/database/bridge-db"
 
-export const config: IBridgeConfigurationOptions = {
-
+export const ocnBridgeConfig: IBridgeConfigurationOptions = {
     publicBridgeURL: "http://localhost:3000",
     port: 3000,
     ocnClientURL: "http://localhost:8080",
