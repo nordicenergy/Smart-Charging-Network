@@ -7,10 +7,14 @@ export class Locations extends Forwarder {
     public sender = {
 
         getList: async (): Promise<ILocation[]> => {
-            const endpoint = await this.backendDb.getEndpoint("locations", "SENDER")
-            const result = await this.makeOcpiRequest("GET", endpoint)
-            const locations = result.map((location: any) => new Location(location, this.country_code, this.party_id))
-            return locations
+            try {
+                const endpoint = await this.backendDb.getEndpoint("locations", "SENDER")
+                const result = await this.makeOcpiRequest("GET", endpoint)
+                const locations = result.map((location: any) => new Location(location, this.country_code, this.party_id))
+                return locations
+            } catch (err) {
+                return []
+            }
         },
 
         getObject: async (id: string): Promise<ILocation> => {

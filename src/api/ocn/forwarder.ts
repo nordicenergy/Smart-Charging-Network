@@ -10,7 +10,7 @@ export class Forwarder {
         const result = await fetch(url, {
             method,
             headers: {
-                Authorization: `Basic ${await this.backendDb.getTokenC()}`
+                Authorization: `Token ${await this.backendDb.getTokenC()}`
             }
         })
         if (!result.ok) {
