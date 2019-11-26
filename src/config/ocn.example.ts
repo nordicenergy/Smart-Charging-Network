@@ -25,5 +25,6 @@ export const ocnBridgeConfig: IBridgeConfigurationOptions = {
     },
     pluggableAPI: new OcpiBridge(backendConfig.pluggableDB, "NL", "ELD"),
     pluggableDB: new OcnDB(),
-    pluggableRegistry: new DefaultRegistry("http://localhost:8544", "0x345ca3e014aaf5dca488057592ee47305d9b3e10")
+    pluggableRegistry: new DefaultRegistry("http://localhost:8544", "0x345ca3e014aaf5dca488057592ee47305d9b3e10"),
+    dryRun: true
 }
