@@ -32,6 +32,7 @@ const register = async () => {
     if (!credentials.token) {
         throw Error("Did not get token back from credentials handshake")
     }
+    await config.pluggableDB.setTokenC(credentials.token)
 
     // stop running our OCPI 2.1.1 server
     await stopOcpiApi(api)
