@@ -1,18 +1,9 @@
 import fetch from "node-fetch"
-import { IPluggableDB, IBridgeConfigurationOptions } from "ocn-bridge"
+import { IPluggableDB } from "ocn-bridge"
 
 export class Forwarder {
 
-    public ocn: {
-        country_code: string
-        party_id: string
-    }
-
-    constructor(public backendDb: IPluggableDB, ocnConfig: IBridgeConfigurationOptions) {
-        this.ocn = {
-            country_code: ocnConfig.roles[0].country_code,
-            party_id: ocnConfig.roles[0].country_code
-        }
+    constructor(public backendDb: IPluggableDB, public country_code: string, public party_id: string) {
     }
 
     public async makeOcpiRequest(method: string, url: string): Promise<any> {
