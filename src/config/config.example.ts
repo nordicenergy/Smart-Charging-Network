@@ -46,5 +46,5 @@ export const ocnBridgeConfig: IBridgeConfigurationOptions = {
     pluggableDB: new OcnDB(),
     pluggableRegistry: new DefaultRegistry("http://localhost:8544", "0x345ca3e014aaf5dca488057592ee47305d9b3e10"),
     logger: true,
-    dryRun: true
+    dryRun: false
 }
