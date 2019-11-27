@@ -5,16 +5,19 @@ import { Server } from "http"
 import { VersionsController } from "./controllers/versions.controller"
 import { IOcpiBackendConfig } from "../../models/ocpi"
 import { isAuthorized } from "./middleware/middleware"
+import { CommandsController } from "./controllers/commands.controller"
 
 const app = express()
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
+app.use(bodyParser.text())
 
 export const startOcpiApi = async (config: IOcpiBackendConfig): Promise<Server> => {
     app.use(
         "/backend",
         isAuthorized(config.pluggableDB),
-        VersionsController.getRoutes(config)
+        VersionsController.getRoutes(config),
+        CommandsController.getRoutes(config.events)
     )
     return new Promise((resolve, _) => {
         const server = app.listen(3001, () => resolve(server))

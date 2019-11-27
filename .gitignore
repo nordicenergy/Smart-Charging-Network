@@ -1,5 +1,4 @@
 /node_modules/
 /dist/
-src/config/backend.ts
-src/config/ocn.ts
+src/config/config.ts
 *.db

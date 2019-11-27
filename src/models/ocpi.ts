@@ -1,5 +1,6 @@
 import { IPluggableDB } from "ocn-bridge"
 import { IBusinessDetails } from "ocn-bridge/dist/models/ocpi/common"
+import { EventEmitter } from "events"
 
 export interface IOcpiBackendConfig {
     registration: {
@@ -10,7 +11,8 @@ export interface IOcpiBackendConfig {
     party_id: string
     country_code: string
     business_details: IBusinessDetails
-    pluggableDB: IPluggableDB
+    pluggableDB: IPluggableDB,
+    events: EventEmitter
 }
 
 export interface IResponse<T> {

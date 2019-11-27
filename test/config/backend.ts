@@ -1,5 +1,6 @@
 import { IOcpiBackendConfig } from "../../src/models/ocpi";
 import { BackendTestDB } from "./backend-db";
+import { EventEmitter } from "events";
 
 export const backendTestConfig: IOcpiBackendConfig = {
     registration: {
@@ -12,5 +13,6 @@ export const backendTestConfig: IOcpiBackendConfig = {
     business_details: {
         name: "NKL (DRIIVZ)"
     },
-    pluggableDB: new BackendTestDB()
+    pluggableDB: new BackendTestDB(),
+    events: new EventEmitter()
 }

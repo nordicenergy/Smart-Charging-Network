@@ -1,7 +1,7 @@
 import { startBridge } from "ocn-bridge"
-import { ocnBridgeConfig } from "./config/ocn"
+import { ocnBridgeConfig } from "./config/config"
 import { startOcpiApi } from "./api/ocpi/ocpi"
-import { backendConfig } from "./config/backend"
+import { backendConfig } from "./config/config"
 
 const main = async () => {
     await startBridge(ocnBridgeConfig)
