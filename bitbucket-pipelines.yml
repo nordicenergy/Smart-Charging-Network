@@ -10,8 +10,7 @@ pipelines:
             - npm config set unsafe-perm true
             - npm install
             - ls node_modules/ocn-bridge
-            - cp src/config/ocn.example.ts src/config/ocn.ts
-            - cp src/config/backend.example.ts src/config/backend.ts
+            - cp src/config/config.example.ts src/config/config.ts
             - npm run build
             - npm test
             - ssh $HOST 'bash -s' < ./setup.sh
@@ -23,8 +22,7 @@ pipelines:
             - npm config set unsafe-perm true
             - npm install
             - ls node_modules/ocn-bridge
-            - cp src/config/ocn.example.ts src/config/ocn.ts
-            - cp src/config/backend.example.ts src/config/backend.ts
+            - cp src/config/config.example.ts src/config/config.ts
             - npm run build
             - npm test    
           
