@@ -4,8 +4,8 @@ pipelines:
   branches:
     master:
       - step:
-          caches:
-            - node
+          # caches:
+          #   - node
           script:
             - npm config set unsafe-perm true
             - npm install
@@ -16,8 +16,8 @@ pipelines:
             - ssh $HOST 'bash -s' < ./setup.sh
   default:
     - step:
-          caches:
-            - node
+          # caches:
+          #   - node
           script:
             - npm config set unsafe-perm true
             - npm install
