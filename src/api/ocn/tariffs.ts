@@ -4,10 +4,10 @@ import { Tariff } from "../../models/translators/tariffs";
 
 export class Tariffs extends Forwarder {
 
-    public receiver = {
+    public sender = {
 
         getList: async (): Promise<ITariff[]> => {
-            const endpoint = await this.backendDb.getEndpoint("tariffs", "RECEIVER")
+            const endpoint = await this.backendDb.getEndpoint("tariffs", "SENDER")
             const result = await this.makeOcpiRequest("GET", endpoint)
             return result.map((tariff: any) => new Tariff(tariff, this.country_code, this.party_id))
         }
