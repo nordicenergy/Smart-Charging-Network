@@ -25,7 +25,10 @@ export class Tariff implements ITariff {
         this.party_id = party_id
         this.id = input.id
         this.currency = input.currency
+        this.tariff_alt_text = input.tariff_alt_text
+        this.tariff_alt_url = input.tariff_alt_url
         this.elements = input.elements
+        this.energy_mix = input.energy_mix
         this.last_updated = input.last_updated
     }
 
