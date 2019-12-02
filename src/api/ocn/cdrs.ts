@@ -7,9 +7,13 @@ export class Cdrs extends Forwarder {
     public sender = {
 
         getList: async (): Promise<IChargeDetailRecord[]> => {
-            const endpoint = await this.backendDb.getEndpoint("cdrs", "SENDER")
-            const result = await this.makeOcpiRequest("GET", endpoint)
-            return result.map((cdr: any) => new Cdr(cdr, this.country_code, this.party_id))
+            try {
+                const endpoint = await this.backendDb.getEndpoint("cdrs", "SENDER")
+                const result = await this.makeOcpiRequest("GET", endpoint)
+                return result.map((cdr: any) => new Cdr(cdr, this.country_code, this.party_id))
+            } catch (err) {
+                return []
+            }
         }
 
     }

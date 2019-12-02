@@ -7,9 +7,13 @@ export class Sessions extends Forwarder {
     public sender = {
 
         getList: async (): Promise<ISession[]> => {
-            const endpoint = await this.backendDb.getEndpoint("sessions", "SENDER")
-            const result = await this.makeOcpiRequest("GET", endpoint)
-            return result.map((session: any) => new Session(session, this.country_code, this.party_id))
+            try {
+                const endpoint = await this.backendDb.getEndpoint("sessions", "SENDER")
+                const result = await this.makeOcpiRequest("GET", endpoint)
+                return result.map((session: any) => new Session(session, this.country_code, this.party_id))
+            } catch (err) {
+                return []
+            }
         }
 
     }
