@@ -27,7 +27,7 @@ export class Location implements ILocation {
     public energy_mix?: IEnergyMix
     public last_updated: string
 
-    constructor(country_code: string, party_id: string, input: any) {
+    constructor(input: any, country_code: string, party_id: string) {
         this.country_code = country_code
         this.party_id = party_id
         this.id = input.id
@@ -43,9 +43,16 @@ export class Location implements ILocation {
             evse.connectors = evse.connectors.map((connector: any) => new Connector(connector))
             return evse
         })
-        this.operator = this.owner = {
-            name: "Innogy eMobility Solutions GmbH"
-        }
+        this.directions = input.directions
+        this.operator = input.operator
+        this.suboperator = input.suboperator
+        this.owner = input.owner
+        this.facilities = input.facilities
+        this.time_zone = input.time_zone
+        this.opening_times = input.opening_times
+        this.charging_when_closed = input.charging_when_closed
+        this.images = input.images
+        this.energy_mix = input.energy_mix
         this.last_updated = input.last_updated
     }
 
@@ -58,7 +65,7 @@ export class Connector implements IConnector {
     public power_type: connectorPowerType
     public max_voltage: number
     public max_amperage: number
-    public tariff_ids: string[]
+    public tariff_ids?: string[]
     public terms_and_conditions?: string
     public last_updated: string
 
@@ -69,7 +76,7 @@ export class Connector implements IConnector {
         this.power_type = input.power_type
         this.max_voltage = input.voltage
         this.max_amperage = input.amperage
-        this.tariff_ids = [input.tariff_id]
+        this.tariff_ids = input.tariff_id ? [input.tariff_id] : undefined
         this.terms_and_conditions = input.terms_and_conditions
         this.last_updated = input.last_updated
     }
