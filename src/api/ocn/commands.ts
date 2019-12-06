@@ -24,7 +24,7 @@ export class Commands extends Forwarder {
 
                 return {
                     commandResponse: {
-                        result: commandResponse.result,
+                        result: commandResponse,
                         timeout: 30
                     },
                     commandResult: async (): Promise<ICommandResult> => {
@@ -59,7 +59,7 @@ export class Commands extends Forwarder {
 
                 return {
                     commandResponse: {
-                        result: commandResponse.result,
+                        result: commandResponse,
                         timeout: 30
                     },
                     commandResult: async (): Promise<ICommandResult> => {
