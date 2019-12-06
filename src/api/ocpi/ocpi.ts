@@ -1,5 +1,6 @@
 import express from "express"
 import * as bodyParser from "body-parser"
+import morgan from "morgan"
 import { Server } from "http"
 
 import { VersionsController } from "./controllers/versions.controller"
@@ -11,6 +12,7 @@ const app = express()
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(bodyParser.text())
+app.use(morgan("dev"))
 
 export const startOcpiApi = async (config: IOcpiBackendConfig): Promise<Server> => {
     app.use(
