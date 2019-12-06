@@ -1,6 +1,6 @@
 import fetch, { Response } from "node-fetch"
 import * as uuid from "uuid"
-import { backendConfig as config } from "../src/config/backend"
+import { backendConfig as config } from "../src/config/config"
 import { startOcpiApi, stopOcpiApi } from "../src/api/ocpi/ocpi"
 
 const register = async () => {

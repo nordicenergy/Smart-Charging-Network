@@ -1,6 +1,7 @@
 import fetch from "node-fetch"
 import { IPluggableDB } from "ocn-bridge"
 import { EventEmitter } from "events"
+import { IFeatures } from "../../models/ocpi"
 
 export class Forwarder {
 
@@ -9,7 +10,8 @@ export class Forwarder {
         public country_code: string,
         public party_id: string,
         public publicIP: string,
-        public events: EventEmitter) {
+        public events: EventEmitter,
+        public features: IFeatures) {
     }
 
     public async makeOcpiRequest(method: string, url: string, body?: any): Promise<any> {

@@ -20,7 +20,10 @@ export const backendConfig: IOcpiBackendConfig = {
         name: "eMobilify GmbH OCN Bridge"
     },
     pluggableDB: new BackendDB(),
-    events
+    events,
+    features: {
+        requireDateFrom: true
+    }
 }
 
 export const ocnBridgeConfig: IBridgeConfigurationOptions = {
@@ -42,7 +45,7 @@ export const ocnBridgeConfig: IBridgeConfigurationOptions = {
         receiver: [],
         sender: ["locations", "tariffs", "sessions", "cdrs"]
     },
-    pluggableAPI: new OcpiBridge(backendConfig.pluggableDB, "NL", "ELD", "http://localhost:3001", events),
+    pluggableAPI: new OcpiBridge(backendConfig.pluggableDB, "NL", "ELD", "http://localhost:3001", events, backendConfig.features),
     pluggableDB: new OcnDB(),
     pluggableRegistry: new DefaultRegistry("http://localhost:8544", "0x345ca3e014aaf5dca488057592ee47305d9b3e10"),
     logger: true,
