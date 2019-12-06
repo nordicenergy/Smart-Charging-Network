@@ -30,7 +30,7 @@ export class Commands extends Forwarder {
                     commandResult: async (): Promise<ICommandResult> => {
                         return new Promise((resolve, _) => {
                             this.events.once(`START_SESSION/${uid}`, (result) => {
-                                resolve({result})
+                                resolve(result)
                             })
                         })
                     }
@@ -65,7 +65,7 @@ export class Commands extends Forwarder {
                     commandResult: async (): Promise<ICommandResult> => {
                         return new Promise((resolve, _) => {
                             this.events.once(`STOP_SESSION/${uid}`, (result) => {
-                                resolve({result})
+                                resolve(result)
                             })
                         })
                     }
