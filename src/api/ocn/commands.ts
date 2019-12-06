@@ -2,6 +2,7 @@ import { IAsyncCommand, CommandResponseType, ICommandResult } from "ocn-bridge/d
 import { Forwarder } from "./forwarder"
 import { IStartSession } from "ocn-bridge/dist/models/pluggableAPI"
 import * as uuid from "uuid"
+import { Token } from "../../models/translators/token"
 
 export class Commands extends Forwarder {
 
@@ -12,8 +13,10 @@ export class Commands extends Forwarder {
             const url = await this.backendDb.getEndpoint("commands", "RECEIVER")
             const uid = uuid.v4()
             const body = {
-                response_url: `${this.publicIP}/ocpi/2.1.1/commands/START_SESSION/${uid}`,
-                ...request
+                response_url: `${this.publicIP}/backend/ocpi/2.1.1/commands/START_SESSION/${uid}`,
+                location_id: request.location_id,
+                evse_uid: request.evse_uid,
+                token: Token.downgrade(request.token)
             }
 
             try {
@@ -47,7 +50,7 @@ export class Commands extends Forwarder {
             const url = await this.backendDb.getEndpoint("commands", "RECEIVER")
             const uid = uuid.v4()
             const body = {
-                response_url: `${this.publicIP}/ocpi/2.1.1/commands/STOP_SESSION/${uid}`,
+                response_url: `${this.publicIP}/backend/ocpi/2.1.1/commands/STOP_SESSION/${uid}`,
                 session_id: sessionID
             }
 
