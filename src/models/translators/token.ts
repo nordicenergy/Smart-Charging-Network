@@ -5,7 +5,7 @@ export class Token implements IToken {
     public static downgrade(token: IToken): any {
         return {
             uid: token.uid,
-            type: token.type,
+            type: token.type === "RFID" ? "RFID" : "OTHER",
             auth_id: token.contract_id,
             visual_number: token.visual_number,
             issuer: token.issuer,
