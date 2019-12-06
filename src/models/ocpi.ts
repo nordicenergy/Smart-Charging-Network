@@ -2,10 +2,6 @@ import { IPluggableDB } from "ocn-bridge"
 import { IBusinessDetails } from "ocn-bridge/dist/models/ocpi/common"
 import { EventEmitter } from "events"
 
-export interface IFeatures {
-    requireDateFrom: boolean
-}
-
 export interface IOcpiBackendConfig {
     registration: {
         versionsURL: string
@@ -16,8 +12,7 @@ export interface IOcpiBackendConfig {
     country_code: string
     business_details: IBusinessDetails
     pluggableDB: IPluggableDB,
-    events: EventEmitter,
-    features: IFeatures
+    events: EventEmitter
 }
 
 export interface IResponse<T> {
