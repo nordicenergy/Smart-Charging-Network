@@ -15,19 +15,29 @@ export class Commands extends Forwarder {
                 response_url: `${this.publicIP}/ocpi/2.1.1/commands/START_SESSION/${uid}`,
                 ...request
             }
-            const commandResponse = await this.makeOcpiRequest("POST", `${url}/START_SESSION`, body)
 
-            return {
-                commandResponse: {
-                    result: commandResponse.result,
-                    timeout: 30
-                },
-                commandResult: async (): Promise<ICommandResult> => {
-                    return new Promise((resolve, _) => {
-                        this.events.once(`START_SESSION/${uid}`, (result) => {
-                            resolve({result})
+            try {
+                const commandResponse = await this.makeOcpiRequest("POST", `${url}/START_SESSION`, body)
+
+                return {
+                    commandResponse: {
+                        result: commandResponse.result,
+                        timeout: 30
+                    },
+                    commandResult: async (): Promise<ICommandResult> => {
+                        return new Promise((resolve, _) => {
+                            this.events.once(`START_SESSION/${uid}`, (result) => {
+                                resolve({result})
+                            })
                         })
-                    })
+                    }
+                }
+            } catch (err) {
+                return {
+                    commandResponse: {
+                        result: CommandResponseType.REJECTED,
+                        timeout: 0
+                    }
                 }
             }
         },
@@ -40,19 +50,29 @@ export class Commands extends Forwarder {
                 response_url: `${this.publicIP}/ocpi/2.1.1/commands/STOP_SESSION/${uid}`,
                 session_id: sessionID
             }
-            const commandResponse = await this.makeOcpiRequest("POST", `${url}/STOP_SESSION`, body)
 
-            return {
-                commandResponse: {
-                    result: commandResponse.result,
-                    timeout: 30
-                },
-                commandResult: async (): Promise<ICommandResult> => {
-                    return new Promise((resolve, _) => {
-                        this.events.once(`STOP_SESSION/${uid}`, (result) => {
-                            resolve({result})
+            try {
+                const commandResponse = await this.makeOcpiRequest("POST", `${url}/STOP_SESSION`, body)
+
+                return {
+                    commandResponse: {
+                        result: commandResponse.result,
+                        timeout: 30
+                    },
+                    commandResult: async (): Promise<ICommandResult> => {
+                        return new Promise((resolve, _) => {
+                            this.events.once(`STOP_SESSION/${uid}`, (result) => {
+                                resolve({result})
+                            })
                         })
-                    })
+                    }
+                }
+            } catch (err) {
+                return {
+                    commandResponse: {
+                        result: CommandResponseType.REJECTED,
+                        timeout: 0
+                    }
                 }
             }
         },
