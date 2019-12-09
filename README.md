@@ -4,9 +4,14 @@ Talk to the OCN with an OCPI 2.1.1 backend
 
 ## Modules
 
+Only the following CPO interfaces are currently implemented:
+
 - Credentials
-- Locations: request locations via backend over OCN
-- Commands: request start and stop of charging session incl. async result
+- Locations (PULL from CPO)
+- Tariffs (PULL from CPO)
+- Commands (request start and stop of charging session incl. async result)
+- Sessions (PULL from CPO)
+- Cdrs (PULL from CPO)
 
 ## Setup
 
