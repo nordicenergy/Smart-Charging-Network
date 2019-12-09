@@ -14,10 +14,10 @@ export const backendConfig: IOcpiBackendConfig = {
         tokenA: "1234567890"
     },
     publicURL: "http://localhost:3001",
-    party_id: "EMY",
+    party_id: "ABC",
     country_code: "DE",
     business_details: {
-        name: "eMobilify GmbH OCN Bridge"
+        name: "OCN Bridge run by someone"
     },
     pluggableDB: new BackendDB(),
     events
@@ -30,10 +30,10 @@ export const ocnBridgeConfig: IBridgeConfigurationOptions = {
     roles: [
         {
             country_code: "NL",
-            party_id: "ELD",
+            party_id: "ABC",
             role: "CPO",
             business_details: {
-                name: "Elaad (DRIIVZ backend)"
+                name: "some business name"
             }
         }
     ],
@@ -42,7 +42,7 @@ export const ocnBridgeConfig: IBridgeConfigurationOptions = {
         receiver: [],
         sender: ["locations", "tariffs", "sessions", "cdrs"]
     },
-    pluggableAPI: new OcpiBridge(backendConfig.pluggableDB, "NL", "ELD", "http://localhost:3001", events),
+    pluggableAPI: new OcpiBridge(backendConfig.pluggableDB, "NL", "ABC", backendConfig.publicURL, events),
     pluggableDB: new OcnDB(),
     pluggableRegistry: new DefaultRegistry("http://localhost:8544", "0x345ca3e014aaf5dca488057592ee47305d9b3e10"),
     logger: true,

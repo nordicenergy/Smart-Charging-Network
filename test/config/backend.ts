@@ -9,9 +9,9 @@ export const backendTestConfig: IOcpiBackendConfig = {
     },
     publicURL: "http://localhost:3001",
     party_id: "NL",
-    country_code: "NKL",
+    country_code: "XXX",
     business_details: {
-        name: "NKL (DRIIVZ)"
+        name: "test company"
     },
     pluggableDB: new BackendTestDB(),
     events: new EventEmitter()
