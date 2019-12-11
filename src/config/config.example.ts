@@ -26,7 +26,7 @@ export const backendConfig: IOcpiBackendConfig = {
 export const ocnBridgeConfig: IBridgeConfigurationOptions = {
     publicBridgeURL: "http://localhost:3000",
     port: 3000,
-    ocnClientURL: "http://localhost:8080",
+    ocnNodeURL: "http://localhost:8080",
     roles: [
         {
             country_code: "NL",

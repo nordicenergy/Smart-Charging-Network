@@ -33,8 +33,8 @@ node scripts/register.js
 
 # Connect to the OCN
 
-The OCN connection requires a TOKEN_A from the OCN client being connected to, as well as a registry entry
-pointing the Bridge's party credentials to the OCN Client. To do the latter, all that is needed is a 
+The OCN connection requires a TOKEN_A from the OCN node being connected to, as well as a registry entry
+pointing the Bridge's party credentials to the OCN Node. To do the latter, all that is needed is a 
 private key with funds to pay for a transaction on the network of choice (defined in the OCN config).
 
 Assuming the OCN config value `dryRun` is set to `false`, the following will attempt to create the connection
