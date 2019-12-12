@@ -35,8 +35,8 @@ export class Session implements ISession {
         }
         this.auth_method = input.auth_method
         this.location_id = input.location.id
-        this.evse_uid = input.evses[0].uid
-        this.connector_id = input.evses[0].connectors[0].id
+        this.evse_uid = input.location.evses[0].uid
+        this.connector_id = input.location.evses[0].connectors[0].id
         this.meter_id = input.meter_id
         this.currency = input.currency.
         // FLAT CdrDimension type doesn't exist in 2.2
