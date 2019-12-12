@@ -38,9 +38,11 @@ export class Session implements ISession {
         this.evse_uid = input.location.evses[0].uid
         this.connector_id = input.location.evses[0].connectors[0].id
         this.meter_id = input.meter_id
-        this.currency = input.currency.
+        this.currency = input.currency
         // FLAT CdrDimension type doesn't exist in 2.2
-        this.charging_periods = input.charging_periods.map((period: any) => period.dimensions.filter((dimension: any) => dimension.type !== "FLAT"))
+        if (input.charging_periods) {
+            this.charging_periods = input.charging_periods.map((period: any) => period.dimensions.filter((dimension: any) => dimension.type !== "FLAT"))
+        }
         this.total_cost = {
             excl_vat: input.price,
             incl_vat: input.price
