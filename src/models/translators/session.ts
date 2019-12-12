@@ -25,8 +25,8 @@ export class Session implements ISession {
         this.country_code = country_code
         this.party_id = party_id
         this.id = input.id
-        this.start_date_time = input.start_date_time
-        this.end_date_time = input.end_date_time
+        this.start_date_time = input.start_datetime
+        this.end_date_time = input.end_datetime
         this.kwh = input.kwh
         this.cdr_token = {
             uid: "",
@@ -39,13 +39,13 @@ export class Session implements ISession {
         this.connector_id = input.location.evses[0].connectors[0].id
         this.meter_id = input.meter_id
         this.currency = input.currency
-        // FLAT CdrDimension type doesn't exist in 2.2
         if (input.charging_periods) {
+            // FLAT CdrDimension type doesn't exist in 2.2
             this.charging_periods = input.charging_periods.map((period: any) => period.dimensions.filter((dimension: any) => dimension.type !== "FLAT"))
         }
         this.total_cost = {
-            excl_vat: input.price,
-            incl_vat: input.price
+            excl_vat: input.total_cost,
+            incl_vat: input.total_cost
         }
         this.status = input.status
         this.last_updated = input.last_updated
