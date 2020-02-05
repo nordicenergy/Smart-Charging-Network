@@ -39,7 +39,7 @@ export const ocnBridgeConfig: IBridgeConfigurationOptions = {
     ],
     modules: {
         implementation: ModuleImplementation.CUSTOM,
-        receiver: [],
+        receiver: ["commands"],
         sender: ["locations", "tariffs", "sessions", "cdrs"]
     },
     pluggableAPI: new OcpiBridge(backendConfig.pluggableDB, "NL", "ABC", backendConfig.publicURL, events),

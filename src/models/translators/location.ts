@@ -6,7 +6,7 @@ export class Location implements ILocation {
     public country_code: string
     public party_id: string
     public id: string
-    public type: "ON_STREET" | "PARKING_GARAGE" | "UNDERGROUND_GARAGE" | "PARKING_LOT" | "OTHER" | "UNKNOWN"
+    public publish: boolean
     public name?: string
     public address: string
     public city: string
@@ -31,7 +31,7 @@ export class Location implements ILocation {
         this.country_code = country_code
         this.party_id = party_id
         this.id = input.id
-        this.type = input.type
+        this.publish = true
         this.name = input.name
         this.address = input.address
         this.city = input.city
