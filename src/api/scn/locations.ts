@@ -1,5 +1,5 @@
 /*
-    Copyright 2019-2020 eMobilify GmbH
+    Copyright 2020 Smart Charging Solutions
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
-import { ILocation, IEvse, IConnector } from "ocn-bridge/dist/models/ocpi/locations"
+import { ILocation, IEvse, IConnector } from "scn-bridge/dist/models/scpi/locations"
 import { Forwarder } from "./forwarder"
 import { Location, Connector } from "../../models/translators/location"
 
@@ -24,7 +24,7 @@ export class Locations extends Forwarder {
         getList: async (): Promise<ILocation[]> => {
             try {
                 const endpoint = await this.backendDb.getEndpoint("locations", "SENDER")
-                const result = await this.makeOcpiRequest("GET", endpoint)
+                const result = await this.makeScpiRequest("GET", endpoint)
                 const locations = result.map((location: any) => new Location(location, this.country_code, this.party_id))
                 return locations
             } catch (err) {
@@ -34,21 +34,21 @@ export class Locations extends Forwarder {
 
         getObject: async (id: string): Promise<ILocation> => {
             const endpoint = await this.backendDb.getEndpoint("locations", "SENDER")
-            const result = await this.makeOcpiRequest("GET", `${endpoint}/${id}`)
+            const result = await this.makeScpiRequest("GET", `${endpoint}/${id}`)
             const location = new Location(result, this.country_code, this.party_id)
             return location
         },
 
         getEvse: async (locationId: string, evseUid: string): Promise<IEvse> => {
             const endpoint = await this.backendDb.getEndpoint("locations", "SENDER")
-            const result = await this.makeOcpiRequest("GET", `${endpoint}/${locationId}/${evseUid}`)
+            const result = await this.makeScpiRequest("GET", `${endpoint}/${locationId}/${evseUid}`)
             result.connectors.map((connector: any) => new Connector(connector))
             return result
         },
 
         getConnector: async (locationId: string, evseUid: string, connectorId: string): Promise<IConnector> => {
             const endpoint = await this.backendDb.getEndpoint("locations", "SENDER")
-            const result = await this.makeOcpiRequest("GET", `${endpoint}/${locationId}/${evseUid}/${connectorId}`)
+            const result = await this.makeScpiRequest("GET", `${endpoint}/${locationId}/${evseUid}/${connectorId}`)
             const connector = new Connector(result)
             return connector
         }

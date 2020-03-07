@@ -1,5 +1,5 @@
 /*
-    Copyright 2019-2020 eMobilify GmbH
+    Copyright 2020 Smart Charging Solutions
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -13,15 +13,15 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
-import { IPluggableDB } from "ocn-bridge";
-import { IVersionDetail } from "ocn-bridge/dist/models/ocpi/versions";
+import { IPluggableDB } from "scn-bridge";
+import { IVersionDetail } from "scn-bridge/dist/models/scpi/versions";
 import * as sqlite3 from "better-sqlite3"
 
-export class OcnDB implements IPluggableDB {
+export class ScnDb implements IPluggableDB {
     private db: sqlite3.Database
 
     constructor() {
-        this.db = sqlite3.default("ocn.db")
+        this.db = sqlite3.default("scn.db")
         this.db.prepare("CREATE TABLE IF NOT EXISTS auth (id INTEGER UNIQUE, token_b TEXT, token_c TEXT)").run()
         this.db.prepare("CREATE TABLE IF NOT EXISTS endpoints (identifier TEXT, role TEXT, url TEXT)").run()
         this.db.prepare("CREATE TABLE IF NOT EXISTS sessions (uid TEXT, evse_uid TEXT, location TEXT)").run()
@@ -37,8 +37,8 @@ export class OcnDB implements IPluggableDB {
         return token_b || ""
     }
 
-    public async setTokenB(tokenB: string) {
-        this.db.prepare("UPDATE auth SET token_b = ? WHERE id = 1").run(tokenB)
+    public async sctTokenB(tokenB: string) {
+        this.db.prepare("UPDATE auth SCT token_b = ? WHERE id = 1").run(tokenB)
     }
 
     public async getTokenC(): Promise<string> {
@@ -46,8 +46,8 @@ export class OcnDB implements IPluggableDB {
         return token_c || ""
     }
 
-    public async setTokenC(tokenC: string) {
-        this.db.prepare("UPDATE auth SET token_c = ? WHERE id = 1").run(tokenC)
+    public async sctTokenC(tokenC: string) {
+        this.db.prepare("UPDATE auth SCT token_c = ? WHERE id = 1").run(tokenC)
     }
 
     public async saveEndpoints(versionDetail: IVersionDetail) {
@@ -60,7 +60,7 @@ export class OcnDB implements IPluggableDB {
 
             if (exists) {
                 this.db
-                    .prepare("UPDATE endpoints SET url = ? WHERE identifier = ? AND role = ?")
+                    .prepare("UPDATE endpoints SCT url = ? WHERE identifier = ? AND role = ?")
                     .run(endpoint.url, endpoint.identifier, endpoint.role)
             } else {
                 this.db

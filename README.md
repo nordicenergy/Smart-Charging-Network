@@ -1,10 +1,10 @@
-# OCPI 2.1.1 bridge
+# SCPI 2.1.1 bridge
 
-Talk to the OCN with an OCPI 2.1.1 backend
+Talk to the SCN with an SCPI 2.1.1 backend
 
 ## Modules
 
-Only the following CPO interfaces are currently implemented:
+Only the following Charging Point interfaces are currently implemented:
 
 - Credentials
 - Locations (PULL from CPO)
@@ -17,10 +17,10 @@ Only the following CPO interfaces are currently implemented:
 
 Copy the example config file, editing necessary values:
 ```
-cp src/config/config.example.ts src/config/config.ts
+cp src/config/config..ts src/config/config.ts
 ```
 
-There are two config objects inside the config file, one for the OCN and one for the OCPI 2.1.1 backend.
+There are two config objects inside the config file, one for the SCN and one for the SCPI 2.1.1 backend.
 
 # Connect to backend
 
@@ -31,14 +31,15 @@ we can do the credentials handshake with it.
 node scripts/register.js
 ```
 
-# Connect to the OCN
+# Connect to the Smart Charging Network
 
-The OCN connection requires a TOKEN_A from the OCN node being connected to, as well as a registry entry
-pointing the Bridge's party credentials to the OCN Node. To do the latter, all that is needed is a 
-private key with funds to pay for a transaction on the network of choice (defined in the OCN config).
+The SCN connection requires a TOKEN_A from the Smart Charging Network (SCN) node being connected to, as well as a
+ registry entry
+pointing the Bridge's party credentials to the Smart Charging Network Node. To do the latter, all that is needed is a 
+private key with funds to pay for a transaction on the network of choice (defined in the Smart Charging Network config).
 
-Assuming the OCN config value `dryRun` is set to `false`, the following will attempt to create the connection
-between bridge and OCN.
+Assuming the SCN config value `dryRun` is set to `false`, the following will attempt to create the connection
+between bridge and SCN.
 
 ```
 TOKEN_A=abc-123 SIGNER_KEY=0x123...456 npm start

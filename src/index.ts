@@ -1,5 +1,5 @@
 /*
-    Copyright 2019-2020 eMobilify GmbH
+    Copyright 2020 Smart Charging Solutions
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -13,16 +13,16 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
-import { startBridge } from "ocn-bridge"
-import { ocnBridgeConfig } from "./config/config"
-import { startOcpiApi } from "./api/ocpi/ocpi"
+import { startBridge } from "scn-bridge"
+import { scnBridgeConfig } from "./config/config"
+import { startScpiApi } from "./api/scpi/scpi"
 import { backendConfig } from "./config/config"
 
 const main = async () => {
-    await startBridge(ocnBridgeConfig)
-    await startOcpiApi(backendConfig)
-    console.log(`OCN Bridge reachable at ${ocnBridgeConfig.publicBridgeURL}/`)
-    console.log(`OCPI 2.1.1 reachable at ${backendConfig.publicURL}/backend`)
+    await startBridge(scnBridgeConfig)
+    await startScpiApi(backendConfig)
+    console.log(`SCN Bridge reachable at ${scnBridgeConfig.publicBridgeURL}/`)
+    console.log(`SCPI 2.1.1 reachable at ${backendConfig.publicURL}/backend`)
 }
 
 main()

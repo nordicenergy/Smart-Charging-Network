@@ -1,5 +1,5 @@
 /*
-    Copyright 2019-2020 eMobilify GmbH
+    Copyright 2020 Smart Charging Solutions
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -13,9 +13,9 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
-import { IChargeDetailRecord, ICdrLocation, ISignedData } from "ocn-bridge/dist/models/ocpi/cdrs"
-import { ICdrToken, authMethod, IChargingPeriod, IPrice } from "ocn-bridge/dist/models/ocpi/session"
-import { ITariff } from "ocn-bridge/dist/models/ocpi/tariffs"
+import { IChargeDetailRecord, ICdrLocation, ISignedData } from "scn-bridge/dist/models/scpi/cdrs"
+import { ICdrToken, authMethod, IChargingPeriod, IPrice } from "scn-bridge/dist/models/scpi/session"
+import { ITariff } from "scn-bridge/dist/models/scpi/tariffs"
 import { Tariff } from "./tariffs"
 
 export class Cdr implements IChargeDetailRecord {

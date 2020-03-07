@@ -1,5 +1,5 @@
 /*
-    Copyright 2019-2020 eMobilify GmbH
+    Copyright 2020 Smart Charging Solutions
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -13,9 +13,9 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
-import { IPluggableDB } from "ocn-bridge";
+import { IPluggableDB } from "scn-bridge";
 import * as sqlite3 from "better-sqlite3"
-import { IVersionDetail } from "ocn-bridge/dist/models/ocpi/versions";
+import { IVersionDetail } from "scn-bridge/dist/models/scpi/versions";
 
 export class BackendDB implements IPluggableDB {
 
@@ -37,8 +37,8 @@ export class BackendDB implements IPluggableDB {
         return token_b || ""
     }
 
-    public async setTokenB(tokenB: string) {
-        this.db.prepare("UPDATE auth SET token_b = ? WHERE id = 1").run(tokenB)
+    public async sctTokenB(tokenB: string) {
+        this.db.prepare("UPDATE auth SCT token_b = ? WHERE id = 1").run(tokenB)
     }
 
     public async getTokenC(): Promise<string> {
@@ -46,8 +46,8 @@ export class BackendDB implements IPluggableDB {
         return token_c || ""
     }
 
-    public async setTokenC(tokenC: string) {
-        this.db.prepare("UPDATE auth SET token_c = ? WHERE id = 1").run(tokenC)
+    public async sctTokenC(tokenC: string) {
+        this.db.prepare("UPDATE auth SCT token_c = ? WHERE id = 1").run(tokenC)
     }
 
     public async saveEndpoints(versionDetail: IVersionDetail) {
@@ -60,7 +60,7 @@ export class BackendDB implements IPluggableDB {
 
             if (exists) {
                 this.db
-                    .prepare("UPDATE endpoints SET url = ? WHERE identifier = ?")
+                    .prepare("UPDATE endpoints SCT url = ? WHERE identifier = ?")
                     .run(endpoint.url, endpoint.identifier)
             } else {
                 this.db

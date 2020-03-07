@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd ocpi-2.1.1-bridge
+cd scpi-2.1.1-bridge
 git pull
 npm install
 npm run build

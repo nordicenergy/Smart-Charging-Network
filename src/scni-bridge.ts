@@ -1,5 +1,5 @@
 /*
-    Copyright 2019-2020 eMobilify GmbH
+    Copyright 2020 Smart Charging Solutions
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -13,15 +13,15 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
-import { IPluggableAPI, IPluggableDB } from "ocn-bridge";
-import { Locations } from "./api/ocn/locations";
+import { IPluggableAPI, IPluggableDB } from "scn-bridge";
+import { Locations } from "./api/scn/locations";
 import { EventEmitter } from "events";
-import { Tariffs } from "./api/ocn/tariffs";
-import { Sessions } from "./api/ocn/sessions";
-import { Cdrs } from "./api/ocn/cdrs";
-import { Commands } from "./api/ocn/commands";
+import { Tariffs } from "./api/scn/tariffs";
+import { Sessions } from "./api/scn/sessions";
+import { Cdrs } from "./api/scn/cdrs";
+import { Commands } from "./api/scn/commands";
 
-export class OcpiBridge implements IPluggableAPI {
+export class ScniBridge implements IPluggableAPI {
     public locations: Locations
     public tariffs: Tariffs
     public sessions: Sessions

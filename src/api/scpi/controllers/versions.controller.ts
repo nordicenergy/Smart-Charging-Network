@@ -1,5 +1,5 @@
 /*
-    Copyright 2019-2020 eMobilify GmbH
+    Copyright 2020 Smart Charging Solutions
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -14,30 +14,30 @@
     limitations under the License.
 */
 import { Router } from "express";
-import { OcpiResponse } from "ocn-bridge/dist/models/ocpi/common";
-import { IOcpiBackendConfig } from "../../../models/ocpi";
+import { ScpiResponse } from "scn-bridge/dist/models/scpi/common";
+import { IScpiBackendConfig } from "../../../models/scpi";
 
 export class VersionsController {
 
-    public static getRoutes(config: IOcpiBackendConfig): Router {
+    public static getRoutes(config: IScpiBackendConfig): Router {
         const router = Router()
 
-        router.get("/ocpi/versions", async (_, res) => {
-            res.send(OcpiResponse.withData([
+        router.get("/scpi/versions", async (_, res) => {
+            res.send(ScpiResponse.withData([
                 {
                     "version": "2.1.1",
-                    "url": `${config.publicURL}/backend/ocpi/versions/2.1.1`
+                    "url": `${config.publicURL}/backend/scpi/versions/2.1.1`
                 }
             ]))
         })
 
-        router.get("/ocpi/versions/2.1.1", async (_, res) => {
-            res.send(OcpiResponse.withData({
+        router.get("/scpi/versions/2.1.1", async (_, res) => {
+            res.send(ScpiResponse.withData({
                 version: "2.1.1",
                 endpoints: [
                     {
                         identifier: "credentials",
-                        url: `${config.publicURL}/backend/ocpi/2.1.1/credentials`
+                        url: `${config.publicURL}/backend/scpi/2.1.1/credentials`
                     }
                 ]
             }))

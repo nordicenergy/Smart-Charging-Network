@@ -1,5 +1,5 @@
 /*
-    Copyright 2019-2020 eMobilify GmbH
+    Copyright 2020 Smart Charging Solutions
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -14,18 +14,18 @@
     limitations under the License.
 */
 import { Forwarder } from "./forwarder";
-import { IChargeDetailRecord } from "ocn-bridge/dist/models/ocpi/cdrs";
-import { Cdr } from "../../models/translators/cdr";
+import { ITariff } from "scn-bridge/dist/models/scpi/tariffs";
+import { Tariff } from "../../models/translators/tariffs";
 
-export class Cdrs extends Forwarder {
+export class Tariffs extends Forwarder {
 
     public sender = {
 
-        getList: async (): Promise<IChargeDetailRecord[]> => {
+        getList: async (): Promise<ITariff[]> => {
             try {
-                const endpoint = await this.backendDb.getEndpoint("cdrs", "SENDER")
-                const result = await this.makeOcpiRequest("GET", endpoint)
-                return result.map((cdr: any) => new Cdr(cdr, this.country_code, this.party_id))
+                const endpoint = await this.backendDb.getEndpoint("tariffs", "SENDER")
+                const result = await this.makeScpiRequest("GET", endpoint)
+                return result.map((tariff: any) => new Tariff(tariff, this.country_code, this.party_id))
             } catch (err) {
                 return []
             }

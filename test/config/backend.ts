@@ -1,13 +1,13 @@
-import { IOcpiBackendConfig } from "../../src/models/ocpi";
+import { IScpiBackendConfig } from "../../src/models/scpi";
 import { BackendTestDB } from "./backend-db";
 import { EventEmitter } from "events";
 
-export const backendTestConfig: IOcpiBackendConfig = {
+export const backendTestConfig: IScpiBackendConfig = {
     registration: {
-        versionsURL: "https://qa.backoffice.net/ocpi/versions",
+        versionsURL: "https://smartcharging.solutions/scpi/versions",
         tokenA: "1234567890"
     },
-    publicURL: "http://localhost:3001",
+    publicURL: "smartcharging.solutions/bridge-frontend/",
     party_id: "NL",
     country_code: "XXX",
     business_details: {

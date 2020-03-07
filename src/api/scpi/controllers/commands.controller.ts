@@ -1,5 +1,5 @@
 /*
-    Copyright 2019-2020 eMobilify GmbH
+    Copyright 2020 Smart Charging Solutions
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -14,16 +14,16 @@
     limitations under the License.
 */
 import { Router } from "express";
-import { OcpiResponse } from "ocn-bridge/dist/models/ocpi/common";
+import { ScpiResponse } from "scn-bridge/dist/models/scpi/common";
 import { EventEmitter } from "events";
 
 export class CommandsController {
     public static getRoutes(events: EventEmitter): Router {
         const router = Router()
 
-        router.post("/ocpi/2.1.1/commands/:command/:uid", async (req, res) => {
+        router.post("/scpi/2.1.1/commands/:command/:uid", async (req, res) => {
             events.emit(`${req.params.command}/${req.params.uid}`, req.body)
-            res.send(OcpiResponse.basicSuccess())
+            res.send(ScpiResponse.basicSuccess())
         })
 
         return router

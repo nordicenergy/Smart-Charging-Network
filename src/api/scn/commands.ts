@@ -1,5 +1,5 @@
 /*
-    Copyright 2019-2020 eMobilify GmbH
+    Copyright 2020 Smart Charging Solutions
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -13,9 +13,9 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
-import { IAsyncCommand, CommandResponseType, ICommandResult } from "ocn-bridge/dist/models/ocpi/commands"
+import { IAsyncCommand, CommandResponseType, ICommandResult } from "scn-bridge/dist/models/scpi/commands"
 import { Forwarder } from "./forwarder"
-import { IStartSession } from "ocn-bridge/dist/models/pluggableAPI"
+import { IStartSession } from "scn-bridge/dist/models/pluggableAPI"
 import * as uuid from "uuid"
 import { Token } from "../../models/translators/token"
 
@@ -28,14 +28,14 @@ export class Commands extends Forwarder {
             const url = await this.backendDb.getEndpoint("commands", "RECEIVER")
             const uid = uuid.v4()
             const body = {
-                response_url: `${this.publicIP}/backend/ocpi/2.1.1/commands/START_SESSION/${uid}`,
+                response_url: `${this.publicIP}/backend/scpi/2.1.1/commands/START_SESSION/${uid}`,
                 location_id: request.location_id,
                 evse_uid: request.evse_uid,
                 token: Token.downgrade(request.token)
             }
 
             try {
-                const commandResponse = await this.makeOcpiRequest("POST", `${url}/START_SESSION`, body)
+                const commandResponse = await this.makeScpiRequest("POST", `${url}/START_SESSION`, body)
 
                 return {
                     commandResponse: {
@@ -65,12 +65,12 @@ export class Commands extends Forwarder {
             const url = await this.backendDb.getEndpoint("commands", "RECEIVER")
             const uid = uuid.v4()
             const body = {
-                response_url: `${this.publicIP}/backend/ocpi/2.1.1/commands/STOP_SESSION/${uid}`,
+                response_url: `${this.publicIP}/backend/scpi/2.1.1/commands/STOP_SESSION/${uid}`,
                 session_id: sessionID
             }
 
             try {
-                const commandResponse = await this.makeOcpiRequest("POST", `${url}/STOP_SESSION`, body)
+                const commandResponse = await this.makeScpiRequest("POST", `${url}/STOP_SESSION`, body)
 
                 return {
                     commandResponse: {

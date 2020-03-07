@@ -1,16 +1,16 @@
-import { IPluggableDB } from "ocn-bridge";
+import { IPluggableDB } from "scn-bridge";
 
 export class BackendTestDB implements IPluggableDB {
     public async getTokenB(): Promise<string> {
         return "token-b"
     }
-    public async setTokenB(): Promise<void> {
+    public async sctTokenB(): Promise<void> {
         return
     }
     public async getTokenC(): Promise<string> {
         return "token-c"
     }
-    public async setTokenC(): Promise<void> {
+    public async sctTokenC(): Promise<void> {
         return
     }
     public async getEndpoint(): Promise<string> {

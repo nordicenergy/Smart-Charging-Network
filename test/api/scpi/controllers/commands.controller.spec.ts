@@ -2,19 +2,19 @@ import "mocha"
 import { assert } from "chai"
 import request from "supertest"
 import { Server } from "http"
-import { startOcpiApi, stopOcpiApi } from "../../../../src/api/ocpi/ocpi"
+import { startScpiApi, stopScpiApi } from "../../../../src/api/scpi/scpi"
 import { backendTestConfig } from "../../../config/backend"
 
-describe("OCPI 2.1.1 commands controller", () => {
+describe("SCPI 2.1.1 commands controller", () => {
 
     let server: Server
 
     beforeEach(async () => {
-        server = await startOcpiApi(backendTestConfig)
+        server = await startScpiApi(backendTestConfig)
     })
 
     afterEach(async () => {
-        await stopOcpiApi(server)
+        await stopScpiApi(server)
     })
 
     it("post async command result", (done) => {
@@ -25,7 +25,7 @@ describe("OCPI 2.1.1 commands controller", () => {
         })
 
         request(server)
-            .post("/backend/ocpi/2.1.1/commands/START_SESSION/123")
+            .post("/backend/scpi/2.1.1/commands/START_SESSION/123")
             .set("Authorization", "Token token-b")
             .set("Content-Type", "text/plain")
             .send("ACCEPTED")

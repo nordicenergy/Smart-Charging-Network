@@ -1,12 +1,12 @@
 import fetch, { Response } from "node-fetch"
 import * as uuid from "uuid"
 import { backendConfig as config } from "../src/config/config"
-import { startOcpiApi, stopOcpiApi } from "../src/api/ocpi/ocpi"
+import { startScpiApi, stopScpiApi } from "../src/api/scpi/scpi"
 
 const register = async () => {
 
-    // start own OCPI 2.1.1 server so recipient can find our versions
-    const api = await startOcpiApi(config)
+    // start own SCPI 2.1.1 server so recipient can find our versions
+    const api = await startScpiApi(config)
 
     // get implemented versions
     const versions = await sendGetRequest(config.registration.versionsURL)
@@ -25,17 +25,17 @@ const register = async () => {
 
     // generate TOKEN_B for recipient to use when authenticating themselves on our system
     const tokenB = uuid.v4()
-    await config.pluggableDB.setTokenB(tokenB)
+    await config.pluggableDB.sctTokenB(tokenB)
 
     // complete the credentials handshake with the recipient
     const credentials = await sendCredentialsRequest(credentialsEndpoint.url, tokenB)
     if (!credentials.token) {
         throw Error("Did not get token back from credentials handshake")
     }
-    await config.pluggableDB.setTokenC(credentials.token)
+    await config.pluggableDB.sctTokenC(credentials.token)
 
-    // stop running our OCPI 2.1.1 server
-    await stopOcpiApi(api)
+    // stop running our SCPI 2.1.1 server
+    await stopScpiApi(api)
 
     return credentials
 }
@@ -55,7 +55,7 @@ const sendCredentialsRequest = async (url: string, tokenB: string): Promise<any>
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            url: `${config.publicURL}/backend/ocpi/versions`,
+            url: `${config.publicURL}/backend/scpi/versions`,
             token: tokenB,
             party_id: config.party_id,
             country_code: config.country_code,
@@ -71,7 +71,7 @@ const parseResponse = async (res: Response, url: string): Promise<any> => {
     }
     const body = await res.json()
     if (body.status_code !== 1000) {
-        throw Error(`OCPI request to ${url} failed: ${body.status_message}`)
+        throw Error(`SCPI request to ${url} failed: ${body.status_message}`)
     }
     return body.data
 }

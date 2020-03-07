@@ -1,5 +1,5 @@
 /*
-    Copyright 2019-2020 eMobilify GmbH
+    Copyright 2020 Smart Charging Solutions
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -13,35 +13,35 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
-import { IBridgeConfigurationOptions, DefaultRegistry } from "ocn-bridge"
-import { ModuleImplementation } from "ocn-bridge/dist/models/bridgeConfigurationOptions"
-import { OcpiBridge } from "../ocpi-bridge"
-import { OcnDB } from "../models/database/ocn-db"
-import { IOcpiBackendConfig } from "../models/ocpi";
+import { IBridgeConfigurationOptions, DefaultRegistry } from "scn-bridge"
+import { ModuleImplementation } from "scn-bridge/dist/models/bridgeConfigurationOptions"
+import { ScniBridge } from "../scni-bridge"
+import { ScnDB } from "../models/database/scn-db"
+import { IScpiBackendConfig } from "../models/scpi";
 import { BackendDB } from "../models/database/backend-db";
 import { EventEmitter } from "events";
 
 const events = new EventEmitter()
 
-export const backendConfig: IOcpiBackendConfig = {
+export const backendConfig: IScpiBackendConfig = {
     registration: {
-        versionsURL: "https://qa.backoffice.net/ocpi/versions",
+        versionsURL: "https://smartcharging.solutions/scpi/versions",
         tokenA: "1234567890"
     },
-    publicURL: "http://localhost:3001",
+    publicURL: "https://smartcharging.solutions/bridge-frontend/",
     party_id: "ABC",
-    country_code: "DE",
+    country_code: "FI",
     business_details: {
-        name: "OCN Bridge run by someone"
+        name: "SCN Bridge run by someone"
     },
     pluggableDB: new BackendDB(),
     events
 }
 
-export const ocnBridgeConfig: IBridgeConfigurationOptions = {
+export const scnBridgeConfig: IBridgeConfigurationOptions = {
     publicBridgeURL: "http://localhost:3000",
     port: 3000,
-    ocnNodeURL: "http://localhost:8080",
+    scnNodeURL: "http://localhost:8080",
     roles: [
         {
             country_code: "NL",
@@ -57,9 +57,9 @@ export const ocnBridgeConfig: IBridgeConfigurationOptions = {
         receiver: ["commands"],
         sender: ["locations", "tariffs", "sessions", "cdrs"]
     },
-    pluggableAPI: new OcpiBridge(backendConfig.pluggableDB, "NL", "ABC", backendConfig.publicURL, events),
-    pluggableDB: new OcnDB(),
-    pluggableRegistry: new DefaultRegistry("http://localhost:8544", "0x345ca3e014aaf5dca488057592ee47305d9b3e10"),
+    pluggableAPI: new ScniBridge(backendConfig.pluggableDB, "NL", "ABC", backendConfig.publicURL, events),
+    pluggableDB: new ScnDB(),
+    pluggableRegistry: new DefaultRegistry("http://localhost:8544", "0x5Cba9EA604Ca760177f4B6F5E2B34414930e3402"),
     logger: true,
     dryRun: false
 }

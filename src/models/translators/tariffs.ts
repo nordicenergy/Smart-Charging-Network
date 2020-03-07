@@ -1,5 +1,5 @@
 /*
-    Copyright 2019-2020 eMobilify GmbH
+    Copyright 2020 Smart Charging Solutions
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -13,10 +13,10 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
-import { ITariff, ITariffElement } from "ocn-bridge/dist/models/ocpi/tariffs";
-import { IDisplayText } from "ocn-bridge/dist/models/ocpi/common";
-import { IPrice } from "ocn-bridge/dist/models/ocpi/session";
-import { IEnergyMix } from "ocn-bridge/dist/models/ocpi/locations";
+import { ITariff, ITariffElement } from "scn-bridge/dist/models/scpi/tariffs";
+import { IDisplayText } from "scn-bridge/dist/models/scpi/common";
+import { IPrice } from "scn-bridge/dist/models/scpi/session";
+import { IEnergyMix } from "scn-bridge/dist/models/scpi/locations";
 
 export class Tariff implements ITariff {
 

@@ -1,5 +1,5 @@
 /*
-    Copyright 2019-2020 eMobilify GmbH
+    Copyright 2020 Smart Charging Solutions
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
     limitations under the License.
 */
 import fetch from "node-fetch"
-import { IPluggableDB } from "ocn-bridge"
+import { IPluggableDB } from "scn-bridge"
 import { EventEmitter } from "events"
 
 export class Forwarder {
@@ -27,7 +27,7 @@ export class Forwarder {
         public events: EventEmitter) {
     }
 
-    public async makeOcpiRequest(method: string, url: string, body?: any): Promise<any> {
+    public async makeScpiRequest(method: string, url: string, body?: any): Promise<any> {
         const options: any = {
             method,
             headers: {
@@ -42,11 +42,11 @@ export class Forwarder {
         if (!result.ok) {
             throw Error(`HTTP request ${method} ${url} failed: ${result.status} ${await result.text()}`)
         }
-        const ocpiResult = await result.json()
-        if (ocpiResult.status_code !== 1000) {
-            throw Error(`OCPI request ${method} ${url} failed: ${ocpiResult.status_code} ${ocpiResult.status_message}`)
+        const scpiResult = await result.json()
+        if (scpiResult.status_code !== 1000) {
+            throw Error(`SCPI request ${method} ${url} failed: ${scpiResult.status_code} ${scpiResult.status_message}`)
         }
-        return ocpiResult.data
+        return scpiResult.data
     }
 
 }

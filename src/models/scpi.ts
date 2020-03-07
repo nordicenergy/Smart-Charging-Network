@@ -1,5 +1,5 @@
 /*
-    Copyright 2019-2020 eMobilify GmbH
+    Copyright 2020 Smart Charging Solutions
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -13,11 +13,11 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
-import { IPluggableDB } from "ocn-bridge"
-import { IBusinessDetails } from "ocn-bridge/dist/models/ocpi/common"
+import { IPluggableDB } from "scn-bridge"
+import { IBusinessDetails } from "scn-bridge/dist/models/scpi/common"
 import { EventEmitter } from "events"
 
-export interface IOcpiBackendConfig {
+export interface IScpiBackendConfig {
     registration: {
         versionsURL: string
         tokenA: string
@@ -36,18 +36,18 @@ export interface IResponse<T> {
     data?: T
 }
 
-export class OcpiResponse implements IResponse<any> {
+export class ScpiResponse implements IResponse<any> {
 
-    public static basicSuccess(): OcpiResponse {
-        return new OcpiResponse({status_code: 1000})
+    public static basicSuccess(): ScpiResponse {
+        return new ScpiResponse({status_code: 1000})
     }
 
-    public static withData(data: any): OcpiResponse {
-        return new OcpiResponse({status_code: 1000, data})
+    public static withData(data: any): ScpiResponse {
+        return new ScpiResponse({status_code: 1000, data})
     }
 
-    public static withMessage(status_code: number, status_message: string): OcpiResponse {
-        return new OcpiResponse({status_code, status_message})
+    public static withMessage(status_code: number, status_message: string): ScpiResponse {
+        return new ScpiResponse({status_code, status_message})
     }
 
     public status_code: number

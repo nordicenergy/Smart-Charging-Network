@@ -1,5 +1,5 @@
 /*
-    Copyright 2019-2020 eMobilify GmbH
+    Copyright 2020 Smart Charging Solutions
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ import morgan from "morgan"
 import { Server } from "http"
 
 import { VersionsController } from "./controllers/versions.controller"
-import { IOcpiBackendConfig } from "../../models/ocpi"
+import { IScpiBackendConfig } from "../../models/scpi"
 import { isAuthorized } from "./middleware/middleware"
 import { CommandsController } from "./controllers/commands.controller"
 
@@ -29,7 +29,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.text())
 app.use(morgan("dev"))
 
-export const startOcpiApi = async (config: IOcpiBackendConfig): Promise<Server> => {
+export const startScpiApi = async (config: IScpiBackendConfig): Promise<Server> => {
     app.use(
         "/backend",
         isAuthorized(config.pluggableDB),
@@ -41,7 +41,7 @@ export const startOcpiApi = async (config: IOcpiBackendConfig): Promise<Server> 
     })
 }
 
-export const stopOcpiApi = async (server: Server): Promise<void> => {
+export const stopScpiApi = async (server: Server): Promise<void> => {
     return new Promise((resolve, _) => {
         server.close(() => resolve())
     })
